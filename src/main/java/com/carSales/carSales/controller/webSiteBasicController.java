@@ -1,8 +1,6 @@
 package com.carSales.carSales.controller;
 
-import com.carSales.carSales.domain.CarStock;
 import com.carSales.carSales.domain.WebSiteBasic;
-import com.carSales.carSales.repository.CarStockRepository;
 import com.carSales.carSales.repository.WebSiteBasicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
