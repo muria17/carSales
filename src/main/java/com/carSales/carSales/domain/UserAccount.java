@@ -15,9 +15,17 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 public class UserAccount {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    String name;
-    String userAccountPassword;
-    Long customerId;
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "customer_id")
+    private Long customerId;
+
+    @Column(name = "user_account_password")
+    private String getUserAccountPassword;
+
 }
