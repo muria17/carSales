@@ -26,6 +26,6 @@ public class UserAccount {
     private Long customerId;
 
     @Column(name = "user_account_password")
-    private String getUserAccountPassword;
+    private String userAccountPassword;
 
 }

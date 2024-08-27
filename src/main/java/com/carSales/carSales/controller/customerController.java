@@ -27,8 +27,8 @@ public class customerController {
         return repository.save(register);
     }
 
-    @PostMapping
     @Transactional
+    @PostMapping(value = "/createUserAccount")
     public UserAccount createUserAccount(@RequestBody UserAccount register) {
         return userAccountRepository.save(register);
     }

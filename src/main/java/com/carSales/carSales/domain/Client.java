@@ -33,6 +33,9 @@ public class Client {
 
     @Column(name = "telephone")
     private String telephone;
+
+    @Column(name = "status")
+    private String status;
 }
 
 
