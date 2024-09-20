@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("carStock")
-public class carStockController {
+public class CarStockController {
 
     @Autowired
     private CarStockRepository repository;

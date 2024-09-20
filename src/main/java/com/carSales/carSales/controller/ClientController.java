@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("client")
-public class clientController {
+public class ClientController {
 
     @Autowired
     private ClientRepository repository;

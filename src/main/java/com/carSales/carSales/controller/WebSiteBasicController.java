@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("webSiteBasic")
-public class webSiteBasicController {
+public class WebSiteBasicController {
 
     @Autowired
     private WebSiteBasicRepository repository;

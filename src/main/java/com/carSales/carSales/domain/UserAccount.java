@@ -19,8 +19,8 @@ public class UserAccount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "login")
+    private String login;
 
     @Column(name = "customer_id")
     private Long customerId;
@@ -28,4 +28,35 @@ public class UserAccount {
     @Column(name = "user_account_password")
     private String userAccountPassword;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getUserAccountPassword() {
+        return userAccountPassword;
+    }
+
+    public void setUserAccountPassword(String userAccountPassword) {
+        this.userAccountPassword = userAccountPassword;
+    }
 }
