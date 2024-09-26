@@ -35,7 +35,7 @@ public class UserAccountRepositoryImpl implements UserAccountRepositoryCustom {
             newUserAccount.setUserAccountPassword(rs.getString("user_account_password"));
             return newUserAccount;
         });
-        return results.isEmpty() ? null : results.getFirst();
+        return results.isEmpty() ? null : results.get(0);
     }
 }
 
