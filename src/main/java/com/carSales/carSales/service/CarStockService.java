@@ -16,5 +16,4 @@ public class CarStockService {
     public List<CarStock> findClientById() {
         return repository.findAll();
     }
-
 }
