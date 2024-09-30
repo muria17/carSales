@@ -10,9 +10,10 @@ public class webConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins(
-                        "http://localhost:4200",          // Para testes locais (Angular)
-                        "http://127.0.0.1:5500",          // Para testes locais (outros hosts)
-                        "https://carsales-production.up.railway.app" // Para produção (Vercel)
+                        "http://localhost:4200",
+                        "http://127.0.0.1:5500",
+                        "https://car-sales-angularjs.vercel.app",
+                        "https://carsales-production.up.railway.app"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
