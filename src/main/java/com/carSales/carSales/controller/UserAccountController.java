@@ -14,8 +14,13 @@ public class UserAccountController {
     @Autowired
     private UserAccountService service;
 
-    @PostMapping
-    public ResponseEntity<UserAccount> validPassword(@RequestBody UserAccount userAccount){
-        return service.validPassword(userAccount);
+    @PostMapping(value = "/createNewUser")
+    public ResponseEntity<String> createNewUser(@RequestBody UserAccount userAccount){
+        return service.createNewUser(userAccount);
+    }
+
+    @PostMapping(value = "/validUserAndPassword")
+    public ResponseEntity<String> validUserAndPassword(@RequestBody UserAccount userAccount){
+        return service.validUserAndPassword(userAccount);
     }
 }
