@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class UserAccountService {
 
@@ -17,21 +20,32 @@ public class UserAccountService {
     private PasswordUtilService passwordUtilService;
 
 
-    public ResponseEntity<String> validUserAndPassword(UserAccount userAccount) {
+    public ResponseEntity<Map<String, String>> validUserAndPassword(UserAccount userAccount) {
         UserAccount newUserAccount = repository.findUserAccountByLogin(userAccount);
 
+        Map<String, String> response = new HashMap<>();
+
         if (newUserAccount != null) {
+            boolean isPasswordMatch = passwordUtilService.matches(
+                    userAccount.getUserAccountPassword(),
+                    newUserAccount.getUserAccountPassword()
+            );
 
-            boolean isPasswordMatch = passwordUtilService.matches(userAccount.getUserAccountPassword(), newUserAccount.getUserAccountPassword());
-
-            return isPasswordMatch ? ResponseEntity.ok("Login realizado com sucesso") : ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Senha incorreta.");
-
+            if (isPasswordMatch) {
+                response.put("message", "Login realizado com sucesso");
+                return ResponseEntity.status(HttpStatus.OK).body(response);
+            } else {
+                response.put("message", "Senha incorreta.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+            }
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário não encontrado.");
+            response.put("message", "Usuário não encontrado.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
     }
 
-    public ResponseEntity<String> createNewUser(UserAccount userAccount) {
+
+    public ResponseEntity<UserAccount> createNewUser(UserAccount userAccount) {
         UserAccount newUseraccount = new UserAccount();
         newUseraccount.setLogin(userAccount.getLogin());
         newUseraccount.setCustomerId(userAccount.getCustomerId());
@@ -42,7 +56,7 @@ public class UserAccountService {
 
         repository.save(newUseraccount);
 
-        return ResponseEntity.ok("Usuario cadastrado com sucesso");
+        return ResponseEntity.ok(newUseraccount);
 
     }
 }

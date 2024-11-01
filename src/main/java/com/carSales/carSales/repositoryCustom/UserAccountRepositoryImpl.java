@@ -21,11 +21,10 @@ public class UserAccountRepositoryImpl implements UserAccountRepositoryCustom {
         query.append(" customer_id              AS customer_id, ");
         query.append(" user_account_password    AS user_account_password ");
         query.append(" FROM user_account ua ");
-        query.append(" WHERE login = :login and user_account_password = :password ");
+        query.append(" WHERE login = :login ");
 
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         namedParameters.addValue("login", userAccount.getLogin(), Types.VARCHAR);
-        namedParameters.addValue("password", userAccount.getUserAccountPassword(), Types.VARCHAR);
 
         List<UserAccount> results = namedParameterJdbcTemplate.query(query.toString(), namedParameters, (rs, rowNum) -> {
             UserAccount newUserAccount = new UserAccount();

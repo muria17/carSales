@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 
 @RestController
 @RequestMapping("userAccount")
@@ -15,12 +17,12 @@ public class UserAccountController {
     private UserAccountService service;
 
     @PostMapping(value = "/createNewUser")
-    public ResponseEntity<String> createNewUser(@RequestBody UserAccount userAccount){
+    public ResponseEntity<UserAccount> createNewUser(@RequestBody UserAccount userAccount){
         return service.createNewUser(userAccount);
     }
 
     @PostMapping(value = "/validUserAndPassword")
-    public ResponseEntity<String> validUserAndPassword(@RequestBody UserAccount userAccount){
+    public ResponseEntity<Map<String, String>> validUserAndPassword(@RequestBody UserAccount userAccount) {
         return service.validUserAndPassword(userAccount);
     }
 }
