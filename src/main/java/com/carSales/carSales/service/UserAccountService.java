@@ -30,16 +30,12 @@ public class UserAccountService {
                     userAccount.getUserAccountPassword(),
                     newUserAccount.getUserAccountPassword()
             );
-
             if (isPasswordMatch) {
-                response.put("message", "Login realizado com sucesso");
                 return ResponseEntity.status(HttpStatus.OK).body(response);
             } else {
-                response.put("message", "Senha incorreta.");
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
             }
         } else {
-            response.put("message", "Usuário não encontrado.");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
     }
@@ -51,12 +47,9 @@ public class UserAccountService {
         newUseraccount.setCustomerId(userAccount.getCustomerId());
 
         String passwordEncoded = passwordUtilService.encodePassword(userAccount.getUserAccountPassword());
-
         newUseraccount.setUserAccountPassword(passwordEncoded);
 
         repository.save(newUseraccount);
-
         return ResponseEntity.ok(newUseraccount);
-
     }
 }

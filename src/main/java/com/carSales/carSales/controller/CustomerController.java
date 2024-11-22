@@ -21,8 +21,8 @@ public class CustomerController {
     @Autowired
     private UserAccountRepository userAccountRepository;
 
-    @PostMapping
     @Transactional
+    @PostMapping
     public Customer create(@RequestBody Customer register) {
         return repository.save(register);
     }
@@ -32,5 +32,4 @@ public class CustomerController {
     public UserAccount createUserAccount(@RequestBody UserAccount register) {
         return userAccountRepository.save(register);
     }
-
 }

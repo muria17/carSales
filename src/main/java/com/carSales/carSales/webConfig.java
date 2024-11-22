@@ -1,4 +1,4 @@
-package com.carSales.carSales; // Ajuste para o seu pacote
+package com.carSales.carSales;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
